@@ -1,10 +1,15 @@
 package com.atividade.entidade;
 
+import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,18 +20,19 @@ public class Aluno {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column
+	@OneToMany(mappedBy = "mensalidade")
+	private ArrayList<Mensalidade> mensalidades;
+	
+	
 	private String nome;
-	@Column
-	private String email;
-	@Column 
+	private String email;	
 	private String telefone;
 	
 	public Aluno() {
 		
 	}
 	public Aluno(String nome, String email, String telefone) {
-		this.nome = nome;
+		this.nome = nome;		
 		this.email =  email;
 		this.telefone = telefone;
 	}

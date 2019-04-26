@@ -7,40 +7,40 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import com.atividade.entidade.Aluno;
+import com.atividade.entidade.Mensalidade;
 
-public class RepositorioAluno {
+public class RepositorioMensalidade {
 	
 	EntityManagerFactory emf;
 	EntityManager em;
 	
-	public RepositorioAluno() {
+	public RepositorioMensalidade() {
 		emf = Persistence.createEntityManagerFactory("teste");
 		em = emf.createEntityManager();
 	}
 		
-	public void salvarAlunos(Aluno aluno) {
+	public void salvarMensalidade(Mensalidade mensalidade) {
 		em.getTransaction().begin();
-		em.merge(aluno);
+		em.merge(mensalidade);
 		em.getTransaction().commit();
 		emf.close();
 	}
 	
-	public void excluirAlunos(Aluno aluno) {
+	public void excluirMensalidade(Mensalidade mensalidade) {
 		em.getTransaction().begin();
-		em.remove(aluno);
+		em.remove(mensalidade);
 		em.getTransaction().commit();
 		emf.close();
 	}
 	
-	public List<Aluno> listarAlunos(){
+	public List<Mensalidade> listarMensalidade(){
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select aluno from Aluno aluno");
+		Query consulta = em.createQuery("select aluno from Mensalidade mensalidade");
 		@SuppressWarnings("unchecked")
-		List<Aluno> aluno = consulta.getResultList();
+		List<Mensalidade> mensalidade = consulta.getResultList();
 		
 		em.getTransaction().commit();
 		emf.close();
-		return aluno;
+		return mensalidade;
 	}
 }
