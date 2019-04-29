@@ -19,21 +19,15 @@ public class Teste {
 		cal.set(Calendar.MONTH, Calendar.DECEMBER);
 		cal.set(2019, 2, 13);	
 		
-		Aluno aluno2 = new Aluno("Maria", "taynaragarces@gmail.com", "98984018000");
-		Mensalidade mensalidade = new Mensalidade(aluno2, cal, cal);
-		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("teste");		
 		EntityManager em = emf.createEntityManager();
 		
-		
+		Aluno aluno2 = new Aluno("Maria", "taynaragarces@gmail.com", "98984018000");
+		Mensalidade mensalidade = new Mensalidade(aluno2, cal, cal);
 		
 		em.getTransaction().begin();
 		em.persist(aluno2);
-		em.getTransaction().commit();
-		emf.close();
-		
 
-		em.getTransaction().begin();
 		em.persist(mensalidade);
 		em.getTransaction().commit();
 		emf.close();
