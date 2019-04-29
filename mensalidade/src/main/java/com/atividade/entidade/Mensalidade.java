@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
+@Entity(name="mensalidade")
 @Table(name="mensalidade")
 public class Mensalidade {
 	
